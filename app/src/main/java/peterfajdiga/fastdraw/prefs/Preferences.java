@@ -19,7 +19,7 @@ public final class Preferences {
     public final boolean headerDivider;
     public final boolean bgGradientColorFromWallpaper;
     public final int bgGradientOpacity;
-
+    public final boolean hide_toast;
     private final SharedPreferences prefs;
     private final Resources res;
 
@@ -36,6 +36,7 @@ public final class Preferences {
         headerDivider                = this.prefs.getBoolean("headerDivider",                this.res.getBoolean(R.bool.default_headerDivider));
         bgGradientColorFromWallpaper = this.prefs.getBoolean("bgGradientColorFromWallpaper", this.res.getBoolean(R.bool.default_bgGradientColorFromWallpaper));
         bgGradientOpacity            = this.prefs.getInt("bgGradientOpacity",                this.res.getInteger(R.integer.default_bgGradientOpacity));
+        hide_toast                   = this.prefs.getBoolean("hide_toast",                   this.res.getBoolean(R.bool.default_hide_error_shortcuts_security_toast));
     }
 
     public int getWidgetHeight() {

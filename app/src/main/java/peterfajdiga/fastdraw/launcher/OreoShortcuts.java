@@ -3,6 +3,7 @@ package peterfajdiga.fastdraw.launcher;
 import static android.content.pm.LauncherApps.ShortcutQuery.FLAG_MATCH_PINNED;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.LauncherApps;
 import android.content.pm.ShortcutInfo;
 import android.graphics.drawable.Drawable;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.preference.PreferenceManager;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -137,6 +139,15 @@ public class OreoShortcuts {
         @NonNull final SecurityException e
     ) {
         Log.e("OreoShortcuts", "Can't access shortcuts (SecurityException)", e);
-        Toast.makeText(context, R.string.error_oreo_shortcuts_security, Toast.LENGTH_LONG).show();
+
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        boolean hideToast = prefs.getBoolean(
+                "hide_toast",
+                context.getResources().getBoolean(R.bool.default_hide_error_shortcuts_security_toast)
+        );
+
+        if (!hideToast) {
+            Toast.makeText(context, R.string.error_oreo_shortcuts_security, Toast.LENGTH_LONG).show();
+        }
     }
 }

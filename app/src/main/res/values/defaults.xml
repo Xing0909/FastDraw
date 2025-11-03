@@ -4,6 +4,7 @@
     <bool name="default_switchToHome">true</bool>
     <bool name="default_headerbtm">false</bool>
     <bool name="default_scrollableTabs">false</bool>
+    <bool name="default_hide_error_shortcuts_security_toast">false</bool>
     <bool name="default_hideHidden">true</bool>
     <bool name="default_wallpaperParallax">true</bool>
     <bool name="default_headerDivider">true</bool>
